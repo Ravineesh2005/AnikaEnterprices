@@ -1,0 +1,267 @@
+/* ============================================================
+   ANIKA ENTERPRISES — MAIN STYLESHEET
+   ============================================================
+   Structure:
+   1. Root Variables
+   2. Reset & Base
+   3. Navigation Bar
+   4. Hero Section
+   5. SVG Title Animation
+   6. Hero Subtitle
+============================================================ */
+
+
+/* ==================== 1. ROOT VARIABLES ==================== */
+:root {
+    /* Background Colors (white scale) */
+    --white:           #ffffff;
+    --off-white:       #f8f8f6;
+    --light-gray:      #f2f2f0;
+    --mid-gray:        #e0e0de;
+
+    /* Text Colors */
+    --dark:            #1a1a1a;
+    --dark-mid:        #444444;
+    --dark-light:      #777777;
+
+    /* Accent Color (gold — professional for crane/construction) */
+    --accent:          #c8a96e;
+    --accent-dark:     #a8893e;
+
+    /* Typography */
+    --font-heading:    'Montserrat', sans-serif;
+    --font-body:       'Poppins', sans-serif;
+
+    /* Layout */
+    --nav-height:      clamp(55px, 8vh, 75px);
+}
+
+
+/* ==================== 2. RESET & BASE ==================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--white);
+    color: var(--dark);
+    overflow-x: hidden;
+}
+
+
+/* ==================== 3. NAVIGATION BAR ==================== */
+
+/* Main nav container */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--nav-height);
+
+    /* White with slight transparency + blur for glass effect */
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* clamp(min, fluid, max) — shrinks padding on small screens */
+    padding: 0 clamp(1rem, 5vw, 4rem);
+
+    /* Subtle bottom shadow */
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+
+    z-index: 1000;
+}
+
+/* Company name on the left */
+.nav-logo {
+    font-family: var(--font-heading);
+    font-size: clamp(0.85rem, 2.5vw, 1.35rem);
+    font-weight: 700;
+    color: var(--dark);
+    letter-spacing: clamp(0.5px, 0.2vw, 1.5px);
+    text-transform: uppercase;
+}
+
+/* Nav links list — remove bullets, display in a row */
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: clamp(1rem, 3.5vw, 2.5rem);
+}
+
+/* Individual nav link */
+.nav-links a {
+    font-family: var(--font-body);
+    font-size: clamp(0.75rem, 1.5vw, 0.95rem);
+    font-weight: 400;
+    color: var(--dark-mid);
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    position: relative;
+    padding-bottom: 4px;
+    transition: color 0.3s ease;
+}
+
+/* Animated underline using ::after */
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background-color: var(--accent);
+    transition: width 0.3s ease;
+}
+
+/* Hover & active state */
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--dark);
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    width: 100%;
+}
+
+
+/* ==================== 4. HERO SECTION ==================== */
+
+/* Full screen hero with background image */
+.hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+
+    background-image: url('assets/img/bg_img1.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* Slow zoom (Ken Burns) on the background image */
+    animation: heroZoom 20s ease-in-out infinite alternate;
+}
+
+/* Background image slowly zooms in and out */
+@keyframes heroZoom {
+    0%   { background-size: 100%; }
+    100% { background-size: 112%; }
+}
+
+/* Dark semi-transparent layer over bg image */
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.52);
+}
+
+/* Wrapper for all hero text content */
+.hero-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(0.8rem, 2vw, 1.5rem);
+}
+
+
+/* ==================== 5. SVG TITLE ANIMATION ==================== */
+
+/* SVG container sizing */
+.hero-title {
+    width: 90vw;
+    max-width: 1100px;
+
+    /* IMPORTANT: without this, SVG clips the edges of letters (like the first 'A') */
+    overflow: visible;
+}
+
+/* SVG text element */
+.hero-title text {
+    font-family: var(--font-heading);
+    /* clamp: min 2rem (small phones) → fluid 9vw → max 8rem (desktops) */
+    font-size: clamp(2rem, 9vw, 8rem);
+    font-weight: 900;
+    letter-spacing: clamp(1px, 0.8vw, 10px);
+    text-transform: uppercase;
+
+    /* Start state: only the stroke (border) is visible, no fill */
+    fill: transparent;
+    stroke: #ffffff;
+    stroke-width: 1.5px;
+
+    /* Increased dasharray to cover full text path at bigger font size */
+    stroke-dasharray: 5000;
+    stroke-dashoffset: 5000;
+
+    /* 
+       Animation chain:
+       - 0s to 3.5s : Draw the stroke border (drawStroke)
+       - 3.5s to 5s  : Fill the letters with white (fillColor)
+    */
+    animation:
+        drawStroke  3.5s ease forwards,
+        fillColor   1.5s ease 3.5s forwards;
+}
+
+/* STEP 1: Animate the stroke from hidden to fully drawn */
+@keyframes drawStroke {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+/* STEP 2: After drawing, fill the text with solid white */
+@keyframes fillColor {
+    to {
+        fill: #ffffff;
+        stroke-width: 0px;
+    }
+}
+
+
+/* ==================== 6. HERO SUBTITLE ==================== */
+
+/* Tagline below the animated title */
+.hero-subtitle {
+    font-family: var(--font-body);
+    font-size: clamp(0.55rem, 1.8vw, 1rem);
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.80);
+    letter-spacing: clamp(1px, 0.5vw, 4px);
+    text-transform: uppercase;
+
+    /* Hidden at start — fades in after title animation finishes */
+    opacity: 0;
+    animation: fadeInUp 1.2s ease 5s forwards;
+}
+
+/* Slide up and fade in */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
