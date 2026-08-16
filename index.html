@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,6 +14,7 @@
     <!-- Main Stylesheet -->
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
     <!-- ========================================================
@@ -23,8 +25,15 @@
         <!-- Company Logo / Name -->
         <div class="nav-logo">Anika Enterprises</div>
 
-        <!-- Nav Links -->
-        <ul class="nav-links">
+        <!-- Hamburger button — visible only on mobile -->
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <!-- Nav Links — collapses into a dropdown on mobile -->
+        <ul class="nav-links" id="nav-links">
             <li><a href="index.html" class="active">Home</a></li>
             <li><a href="about.html">About Us</a></li>
             <li><a href="contact.html">Contact Us</a></li>
@@ -59,5 +68,25 @@
     </section>
 
 
+    <!-- Hamburger toggle script -->
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks  = document.getElementById('nav-links');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('open');
+            navLinks.classList.toggle('open');
+        });
+
+        /* Close menu when a link is clicked */
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('open');
+                navLinks.classList.remove('open');
+            });
+        });
+    </script>
+
 </body>
+
 </html>

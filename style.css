@@ -5,35 +5,34 @@
    1. Root Variables
    2. Reset & Base
    3. Navigation Bar
-   4. Hero Section
-   5. SVG Title Animation
-   6. Hero Subtitle
+   4. Hamburger Button (mobile)
+   5. Hero Section
+   6. SVG Title Animation
+   7. Hero Subtitle
+   8. Media Queries (mobile < 500px)
 ============================================================ */
 
 
 /* ==================== 1. ROOT VARIABLES ==================== */
 :root {
-    /* Background Colors (white scale) */
-    --white:           #ffffff;
-    --off-white:       #f8f8f6;
-    --light-gray:      #f2f2f0;
-    --mid-gray:        #e0e0de;
+    /* White-scale backgrounds */
+    --white:      #ffffff;
+    --off-white:  #f8f8f6;
+    --light-gray: #f2f2f0;
 
-    /* Text Colors */
-    --dark:            #1a1a1a;
-    --dark-mid:        #444444;
-    --dark-light:      #777777;
+    /* Text */
+    --dark:       #1a1a1a;
+    --dark-mid:   #444444;
 
-    /* Accent Color (gold — professional for crane/construction) */
-    --accent:          #c8a96e;
-    --accent-dark:     #a8893e;
+    /* Gold accent — professional for crane/construction */
+    --accent:     #c8a96e;
 
-    /* Typography */
-    --font-heading:    'Montserrat', sans-serif;
-    --font-body:       'Poppins', sans-serif;
+    /* Fonts */
+    --font-heading: 'Montserrat', sans-serif;
+    --font-body:    'Poppins', sans-serif;
 
-    /* Layout */
-    --nav-height:      clamp(55px, 8vh, 75px);
+    /* Nav height */
+    --nav-height: 68px;
 }
 
 
@@ -58,7 +57,7 @@ body {
 
 /* ==================== 3. NAVIGATION BAR ==================== */
 
-/* Main nav container */
+/* Main bar */
 .navbar {
     position: fixed;
     top: 0;
@@ -66,44 +65,42 @@ body {
     width: 100%;
     height: var(--nav-height);
 
-    /* White with slight transparency + blur for glass effect */
-    background-color: rgba(255, 255, 255, 0.95);
+    background-color: rgba(255, 255, 255, 0.96);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
 
     display: flex;
     align-items: center;
     justify-content: space-between;
-    /* clamp(min, fluid, max) — shrinks padding on small screens */
     padding: 0 clamp(1rem, 5vw, 4rem);
 
-    /* Subtle bottom shadow */
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
-
     z-index: 1000;
 }
 
-/* Company name on the left */
+/* Logo */
 .nav-logo {
     font-family: var(--font-heading);
-    font-size: clamp(0.85rem, 2.5vw, 1.35rem);
+    font-size: clamp(0.9rem, 2.5vw, 1.3rem);
     font-weight: 700;
     color: var(--dark);
-    letter-spacing: clamp(0.5px, 0.2vw, 1.5px);
+    letter-spacing: 1px;
     text-transform: uppercase;
+    /* Stay visible above the mobile dropdown */
+    z-index: 1001;
 }
 
-/* Nav links list — remove bullets, display in a row */
+/* Links list */
 .nav-links {
     list-style: none;
     display: flex;
-    gap: clamp(1rem, 3.5vw, 2.5rem);
+    gap: clamp(1.2rem, 3.5vw, 2.5rem);
 }
 
-/* Individual nav link */
+/* Individual link */
 .nav-links a {
     font-family: var(--font-body);
-    font-size: clamp(0.75rem, 1.5vw, 0.95rem);
+    font-size: clamp(0.8rem, 1.5vw, 0.95rem);
     font-weight: 400;
     color: var(--dark-mid);
     text-decoration: none;
@@ -113,7 +110,7 @@ body {
     transition: color 0.3s ease;
 }
 
-/* Animated underline using ::after */
+/* Animated gold underline on hover */
 .nav-links a::after {
     content: '';
     position: absolute;
@@ -125,7 +122,6 @@ body {
     transition: width 0.3s ease;
 }
 
-/* Hover & active state */
 .nav-links a:hover,
 .nav-links a.active {
     color: var(--dark);
@@ -137,13 +133,52 @@ body {
 }
 
 
-/* ==================== 4. HERO SECTION ==================== */
+/* ==================== 4. HAMBURGER BUTTON (mobile) ==================== */
 
-/* Full screen hero with background image */
+/* Hidden on desktop — shown only via media query below */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+    z-index: 1001;
+}
+
+/* Three bar lines */
+.hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: var(--dark);
+    border-radius: 2px;
+    transition: transform 0.35s ease, opacity 0.25s ease;
+    transform-origin: center;
+}
+
+/* Animate bars into an X when .open is added */
+.hamburger.open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+.hamburger.open span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+}
+.hamburger.open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+
+/* ==================== 5. HERO SECTION ==================== */
+
 .hero {
     position: relative;
     width: 100%;
     height: 100vh;
+    min-height: 500px; /* ensures full coverage on very short screens */
 
     background-image: url('assets/img/bg_img1.jpeg');
     background-size: cover;
@@ -154,24 +189,23 @@ body {
     align-items: center;
     justify-content: center;
 
-    /* Slow zoom (Ken Burns) on the background image */
+    /* Slow background zoom (Ken Burns effect) */
     animation: heroZoom 20s ease-in-out infinite alternate;
 }
 
-/* Background image slowly zooms in and out */
 @keyframes heroZoom {
     0%   { background-size: 100%; }
     100% { background-size: 112%; }
 }
 
-/* Dark semi-transparent layer over bg image */
+/* Dark overlay for text readability */
 .hero-overlay {
     position: absolute;
     inset: 0;
     background: rgba(0, 0, 0, 0.52);
 }
 
-/* Wrapper for all hero text content */
+/* Content wrapper */
 .hero-content {
     position: relative;
     z-index: 1;
@@ -183,85 +217,160 @@ body {
 }
 
 
-/* ==================== 5. SVG TITLE ANIMATION ==================== */
+/* ==================== 6. SVG TITLE ANIMATION ==================== */
 
-/* SVG container sizing */
+/* SVG container */
 .hero-title {
     width: 90vw;
     max-width: 1100px;
-
-    /* IMPORTANT: without this, SVG clips the edges of letters (like the first 'A') */
-    overflow: visible;
+    overflow: visible; /* prevents first letter from being clipped */
 }
 
-/* SVG text element */
+/* SVG text — stroke-draw then fill animation */
 .hero-title text {
     font-family: var(--font-heading);
-    /* clamp: min 2rem (small phones) → fluid 9vw → max 8rem (desktops) */
     font-size: clamp(2rem, 9vw, 8rem);
     font-weight: 900;
     letter-spacing: clamp(1px, 0.8vw, 10px);
     text-transform: uppercase;
 
-    /* Start state: only the stroke (border) is visible, no fill */
     fill: transparent;
     stroke: #ffffff;
     stroke-width: 1.5px;
 
-    /* Increased dasharray to cover full text path at bigger font size */
     stroke-dasharray: 5000;
     stroke-dashoffset: 5000;
 
-    /* 
-       Animation chain:
-       - 0s to 3.5s : Draw the stroke border (drawStroke)
-       - 3.5s to 5s  : Fill the letters with white (fillColor)
-    */
+    /* Step 1: draw the stroke outline (0s → 3.5s)  */
+    /* Step 2: fill with solid white   (3.5s → 5s)  */
     animation:
-        drawStroke  3.5s ease forwards,
-        fillColor   1.5s ease 3.5s forwards;
+        drawStroke 3.5s ease forwards,
+        fillColor  1.5s ease 3.5s forwards;
 }
 
-/* STEP 1: Animate the stroke from hidden to fully drawn */
+/* Step 1 — draw the stroke border */
 @keyframes drawStroke {
-    to {
-        stroke-dashoffset: 0;
-    }
+    to { stroke-dashoffset: 0; }
 }
 
-/* STEP 2: After drawing, fill the text with solid white */
+/* Step 2 — fill the text with white */
 @keyframes fillColor {
     to {
         fill: #ffffff;
-        stroke-width: 0px;
+        stroke-width: 0;
     }
 }
 
 
-/* ==================== 6. HERO SUBTITLE ==================== */
+/* ==================== 7. HERO SUBTITLE ==================== */
 
-/* Tagline below the animated title */
 .hero-subtitle {
     font-family: var(--font-body);
-    font-size: clamp(0.55rem, 1.8vw, 1rem);
+    font-size: clamp(0.6rem, 1.8vw, 1rem);
     font-weight: 300;
-    color: rgba(255, 255, 255, 0.80);
-    letter-spacing: clamp(1px, 0.5vw, 4px);
+    color: rgba(255, 255, 255, 0.82);
+    letter-spacing: clamp(2px, 0.5vw, 4px);
     text-transform: uppercase;
 
-    /* Hidden at start — fades in after title animation finishes */
+    /* Hidden until title animation finishes */
     opacity: 0;
     animation: fadeInUp 1.2s ease 5s forwards;
 }
 
-/* Slide up and fade in */
 @keyframes fadeInUp {
     from {
         opacity: 0;
-        transform: translateY(18px);
+        transform: translateY(16px);
     }
     to {
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+
+/* ==================== 8. MEDIA QUERIES — mobile < 500px ==================== */
+
+@media (max-width: 500px) {
+
+    /* --- Navbar: switch to vertical dropdown layout --- */
+    .navbar {
+        /* Allow height to grow when menu is open */
+        height: auto;
+        min-height: var(--nav-height);
+        flex-wrap: wrap;
+        padding: 0 1.2rem;
+        align-items: center;
+    }
+
+    /* Logo row stays at fixed height */
+    .nav-logo {
+        height: var(--nav-height);
+        display: flex;
+        align-items: center;
+        font-size: 1rem;
+    }
+
+    /* Show hamburger button on mobile */
+    .hamburger {
+        display: flex;
+        height: var(--nav-height);
+        align-items: center;
+    }
+
+    /* Hide nav links by default — slide down when .open is added */
+    .nav-links {
+        width: 100%;
+        flex-direction: column;
+        gap: 0;
+        max-height: 0;
+        overflow: hidden;
+
+        /* Smooth slide down */
+        transition: max-height 0.4s ease, padding 0.3s ease;
+        padding: 0;
+    }
+
+    /* Open state: slide the menu into view */
+    .nav-links.open {
+        max-height: 200px;
+        padding: 0.5rem 0 1rem;
+    }
+
+    /* Each link: full width, padded row */
+    .nav-links li {
+        width: 100%;
+    }
+
+    .nav-links a {
+        display: block;
+        width: 100%;
+        padding: 0.65rem 0;
+        font-size: 0.9rem;
+        border-bottom: 1px solid var(--light-gray);
+    }
+
+    /* Remove underline pseudo-element on mobile — not needed */
+    .nav-links a::after {
+        display: none;
+    }
+
+    /* --- Hero: ensure full screen height on small phones --- */
+    .hero {
+        height: 100svh; /* svh = small viewport height, handles mobile browsers */
+        min-height: 100vh; /* fallback for browsers without svh */
+    }
+
+    /* --- SVG title: bigger minimum on narrow screens --- */
+    .hero-title text {
+        font-size: clamp(1.8rem, 11vw, 3rem);
+        letter-spacing: 2px;
+    }
+
+    /* --- Subtitle: visible and readable on mobile --- */
+    .hero-subtitle {
+        font-size: 0.65rem;
+        letter-spacing: 2px;
+    }
+
 }
