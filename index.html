@@ -25,17 +25,15 @@
     ======================================================== -->
     <nav class="navbar">
 
-        <!-- Company Logo / Name -->
         <div class="nav-logo">Anika Enterprises</div>
 
-        <!-- Hamburger button — visible only on mobile -->
+        <!-- Hamburger — visible on mobile only -->
         <button class="hamburger" id="hamburger" aria-label="Toggle menu">
             <span></span>
             <span></span>
             <span></span>
         </button>
 
-        <!-- Nav Links — collapses into a dropdown on mobile -->
         <ul class="nav-links" id="nav-links">
             <li><a href="index.html" class="active">Home</a></li>
             <li><a href="about.html">About Us</a></li>
@@ -46,24 +44,20 @@
 
 
     <!-- ========================================================
-         HERO SECTION  (full screen background image)
+         HERO SECTION
     ======================================================== -->
     <section class="hero">
 
-        <!-- Dark overlay so text stays readable on the bg image -->
         <div class="hero-overlay"></div>
 
-        <!-- Center content -->
         <div class="hero-content">
 
-            <!-- SVG Text: draws border first, then fills with white -->
             <svg class="hero-title" viewBox="0 0 1200 200" xmlns="http://www.w3.org/2000/svg">
                 <text x="50%" y="72%" text-anchor="middle" dominant-baseline="middle">
                     Anika Enterprises
                 </text>
             </svg>
 
-            <!-- Subtitle fades in after title animation ends -->
             <p class="hero-subtitle">Professional Crane Services You Can Trust</p>
 
         </div>
@@ -78,37 +72,29 @@
 
         <div class="query-container">
 
-            <!-- Section heading -->
             <div class="query-header">
                 <h2 class="query-title">Get a <span>Free Quote</span></h2>
                 <p class="query-subtitle">Fill in the form below and our team will get back to you shortly</p>
             </div>
 
-            <!-- Formspree handles form submission — sends email on submit -->
             <form class="query-form" action="https://formspree.io/f/xnpawldz" method="POST">
 
-                <!-- Row: Name + Phone side by side -->
                 <div class="form-row">
-
                     <div class="form-group">
                         <label for="name">Full Name</label>
                         <input type="text" id="name" name="name" placeholder="Your full name" required>
                     </div>
-
                     <div class="form-group">
                         <label for="phone">Phone Number</label>
                         <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210" required>
                     </div>
-
                 </div>
 
-                <!-- Email -->
                 <div class="form-group">
                     <label for="email">Email Address</label>
                     <input type="email" id="email" name="email" placeholder="your@email.com" required>
                 </div>
 
-                <!-- Message -->
                 <div class="form-group">
                     <label for="message">Your Query</label>
                     <textarea id="message" name="message" rows="5" placeholder="Tell us about your crane service requirements..." required></textarea>
@@ -124,12 +110,194 @@
 
 
     <!-- ========================================================
+         OUR WORKS & SERVICES SECTION
+    ======================================================== -->
+    <section class="works-section">
+
+        <!-- Section heading -->
+        <div class="works-header">
+            <h2 class="works-title">Our Works & <span>Services</span></h2>
+            <p class="works-subtitle">A glimpse of our professional crane operations across industries</p>
+        </div>
+
+        <!-- Slideshow: image left, service info right -->
+        <div class="works-slideshow">
+
+            <!-- Left: images (fade in/out every 5s) -->
+            <div class="works-images">
+
+                <div class="work-slide active">
+                    <img src="assets/img/img1.jpeg" alt="Heavy Lifting Operations">
+                </div>
+                <div class="work-slide">
+                    <img src="assets/img/img2.jpeg" alt="Construction Site Craning">
+                </div>
+                <div class="work-slide">
+                    <img src="assets/img/img3.jpeg" alt="Industrial Equipment Setup">
+                </div>
+                <div class="work-slide">
+                    <img src="assets/img/img4.jpeg" alt="Infrastructure Development">
+                </div>
+                <div class="work-slide">
+                    <img src="assets/img/img5.jpeg" alt="Port & Logistics Operations">
+                </div>
+                <div class="work-slide">
+                    <img src="assets/img/img6.jpeg" alt="High-Rise Building Projects">
+                </div>
+                <div class="work-slide">
+                    <img src="assets/img/img7.jpeg" alt="Pipeline & Utility Works">
+                </div>
+                <div class="work-slide">
+                    <img src="assets/img/img8.jpeg" alt="Factory & Plant Erection">
+                </div>
+                <div class="work-slide">
+                    <img src="assets/img/img9.jpeg" alt="Bridge Construction Support">
+                </div>
+                <div class="work-slide">
+                    <img src="assets/img/img10.jpeg" alt="Emergency Crane Response">
+                </div>
+
+            </div>
+
+            <!-- Right: matching service info panel -->
+            <div class="works-info-panel">
+
+                <div class="work-info active">
+                    <span class="info-number">01</span>
+                    <h3 class="info-title">Heavy Lifting <span>Operations</span></h3>
+                    <p class="info-desc">We specialize in lifting and placing heavy machinery, steel beams, and structural components with precision and full safety compliance.</p>
+                    <ul class="info-features">
+                        <li>Up to 500-tonne capacity</li>
+                        <li>Safety-first approach</li>
+                        <li>Certified experienced operators</li>
+                    </ul>
+                </div>
+
+                <div class="work-info">
+                    <span class="info-number">02</span>
+                    <h3 class="info-title">Construction Site <span>Craning</span></h3>
+                    <p class="info-desc">Reliable crane support for commercial and residential construction projects from foundation to rooftop, ensuring on-time delivery.</p>
+                    <ul class="info-features">
+                        <li>Multi-storey support</li>
+                        <li>Material hoisting</li>
+                        <li>Concrete placement</li>
+                    </ul>
+                </div>
+
+                <div class="work-info">
+                    <span class="info-number">03</span>
+                    <h3 class="info-title">Industrial Equipment <span>Setup</span></h3>
+                    <p class="info-desc">Expert rigging and precise placement of turbines, compressors, and large-scale industrial machinery in factories and plants.</p>
+                    <ul class="info-features">
+                        <li>Factory installations</li>
+                        <li>Power plant projects</li>
+                        <li>Precision rigging</li>
+                    </ul>
+                </div>
+
+                <div class="work-info">
+                    <span class="info-number">04</span>
+                    <h3 class="info-title">Infrastructure <span>Development</span></h3>
+                    <p class="info-desc">Supporting road, highway, and civil infrastructure projects with powerful crane operations for government and private sectors.</p>
+                    <ul class="info-features">
+                        <li>Bridge deck placement</li>
+                        <li>Culvert installation</li>
+                        <li>Road infrastructure works</li>
+                    </ul>
+                </div>
+
+                <div class="work-info">
+                    <span class="info-number">05</span>
+                    <h3 class="info-title">Port & Logistics <span>Operations</span></h3>
+                    <p class="info-desc">Efficient lifting and movement of cargo containers and heavy freight at ports, warehouses, and logistics hubs with speed and care.</p>
+                    <ul class="info-features">
+                        <li>Container handling</li>
+                        <li>Freight operations</li>
+                        <li>Logistics support</li>
+                    </ul>
+                </div>
+
+                <div class="work-info">
+                    <span class="info-number">06</span>
+                    <h3 class="info-title">High-Rise Building <span>Projects</span></h3>
+                    <p class="info-desc">Specialized crane solutions for multi-storey residential and commercial high-rise developments with safe material supply systems.</p>
+                    <ul class="info-features">
+                        <li>Tower crane services</li>
+                        <li>Material supply & placing</li>
+                        <li>Structural steel assembly</li>
+                    </ul>
+                </div>
+
+                <div class="work-info">
+                    <span class="info-number">07</span>
+                    <h3 class="info-title">Pipeline & Utility <span>Works</span></h3>
+                    <p class="info-desc">Precise installation of pipelines, ducts, and utility infrastructure for oil, gas, water, and electrical sectors nationwide.</p>
+                    <ul class="info-features">
+                        <li>Oil & gas pipelines</li>
+                        <li>Water main installation</li>
+                        <li>Electrical infrastructure</li>
+                    </ul>
+                </div>
+
+                <div class="work-info">
+                    <span class="info-number">08</span>
+                    <h3 class="info-title">Factory & Plant <span>Erection</span></h3>
+                    <p class="info-desc">Complete erection of industrial sheds, factory structures, and prefabricated plant units delivered on schedule and within budget.</p>
+                    <ul class="info-features">
+                        <li>Steel structure erection</li>
+                        <li>Pre-engineered buildings</li>
+                        <li>Plant commissioning support</li>
+                    </ul>
+                </div>
+
+                <div class="work-info">
+                    <span class="info-number">09</span>
+                    <h3 class="info-title">Bridge Construction <span>Support</span></h3>
+                    <p class="info-desc">Critical lifting and precise placement of bridge girders, decks, and structural beams for road and railway bridge projects of all scales.</p>
+                    <ul class="info-features">
+                        <li>Pre-stressed girder placement</li>
+                        <li>RCC deck positioning</li>
+                        <li>Span-by-span construction</li>
+                    </ul>
+                </div>
+
+                <div class="work-info">
+                    <span class="info-number">10</span>
+                    <h3 class="info-title">Emergency Crane <span>Response</span></h3>
+                    <p class="info-desc">24/7 emergency crane services for accident recovery, equipment rescue, and any urgent lifting and shifting requirements anywhere.</p>
+                    <ul class="info-features">
+                        <li>Round-the-clock availability</li>
+                        <li>Rapid deployment</li>
+                        <li>Breakdown & accident recovery</li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Progress dots — click to jump to any slide -->
+        <div class="slide-dots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+
+    </section>
+
+
+    <!-- ========================================================
          FLOATING ACTION BUTTONS
-         WhatsApp — bottom right
-         Phone    — bottom left
+         WhatsApp — bottom right | Phone — bottom left
     ======================================================== -->
 
-    <!-- WhatsApp floating button -->
     <a href="https://wa.me/919876543210"
        class="float-btn whatsapp-btn"
        target="_blank"
@@ -138,7 +306,6 @@
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <!-- Phone floating button -->
     <a href="tel:+919876543210"
        class="float-btn phone-btn"
        aria-label="Call us">
@@ -147,25 +314,9 @@
 
 
     <!-- ========================================================
-         HAMBURGER TOGGLE SCRIPT
+         SCRIPTS
     ======================================================== -->
-    <script>
-        const hamburger = document.getElementById('hamburger');
-        const navLinks  = document.getElementById('nav-links');
-
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('open');
-            navLinks.classList.toggle('open');
-        });
-
-        /* Close menu when a link is clicked */
-        navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                hamburger.classList.remove('open');
-                navLinks.classList.remove('open');
-            });
-        });
-    </script>
+    <script src="main.js"></script>
 
 </body>
 
