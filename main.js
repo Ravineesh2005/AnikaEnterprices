@@ -27,16 +27,28 @@ navLinks.querySelectorAll('a').forEach(link => {
     let timer;
 
     function goToSlide(n) {
-        /* Remove active from current slide */
-        slides[current].classList.remove('active');
-        infos[current].classList.remove('active');
-        dots[current].classList.remove('active');
+        /* Calculate indices */
+        const length = slides.length;
+        current = (n + length) % length;
+        const prev = (current - 1 + length) % length;
+        const next = (current + 1) % length;
 
-        /* Calculate next index — loops back to 0 after last */
-        current = (n + slides.length) % slides.length;
+        /* Reset classes on all elements */
+        slides.forEach(slide => {
+            slide.classList.remove('active', 'prev', 'next');
+        });
+        infos.forEach(info => {
+            info.classList.remove('active');
+        });
+        dots.forEach(dot => {
+            dot.classList.remove('active');
+        });
 
-        /* Apply active to new slide */
+        /* Apply classes for the 3D gallery and active info */
+        slides[prev].classList.add('prev');
         slides[current].classList.add('active');
+        slides[next].classList.add('next');
+        
         infos[current].classList.add('active');
         dots[current].classList.add('active');
     }
@@ -55,5 +67,18 @@ navLinks.querySelectorAll('a').forEach(link => {
         });
     });
 
+    /* Click on side images to navigate */
+    slides.forEach((slide, i) => {
+        slide.addEventListener('click', () => {
+            if (slide.classList.contains('prev') || slide.classList.contains('next')) {
+                clearInterval(timer);
+                goToSlide(i);
+                startTimer();
+            }
+        });
+    });
+
+    /* Initialize the gallery */
+    goToSlide(0);
     startTimer();
 })();
