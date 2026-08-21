@@ -315,16 +315,22 @@ body {
     z-index: 0;
 }
 
-/* White card that holds the form — sits above the overlay */
+/* Glass card — transparent with blur, sits above the overlay */
 .query-container {
     position: relative;
     z-index: 1;
     max-width: 760px;
     margin: 0 auto;
-    background-color: var(--white);
-    border-radius: 4px;
+
+    /* Glassmorphism: semi-transparent white + blur */
+    background: rgba(255, 255, 255, 0.10);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    border: 1px solid rgba(255, 255, 255, 0.20);
+    border-radius: 6px;
     padding: clamp(2rem, 5vw, 3.5rem);
-    box-shadow: 0 4px 40px rgba(0, 0, 0, 0.07);
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.25);
 }
 
 /* Section heading area */
@@ -337,7 +343,7 @@ body {
     font-family: var(--font-heading);
     font-size: clamp(1.4rem, 3vw, 2rem);
     font-weight: 700;
-    color: var(--dark);
+    color: var(--white);              /* white on dark bg image */
     letter-spacing: 1px;
     text-transform: uppercase;
     margin-bottom: 0.5rem;
@@ -351,7 +357,7 @@ body {
 .query-subtitle {
     font-family: var(--font-body);
     font-size: clamp(0.8rem, 1.5vw, 0.95rem);
-    color: var(--dark-mid);
+    color: rgba(255, 255, 255, 0.75);  /* soft white */
 }
 
 /* Two-column grid for Name + Phone row */
@@ -374,7 +380,7 @@ body {
     font-family: var(--font-body);
     font-size: 0.78rem;
     font-weight: 600;
-    color: var(--dark-mid);
+    color: rgba(255, 255, 255, 0.85);  /* white label on glass */
     letter-spacing: 0.5px;
     text-transform: uppercase;
 }
@@ -384,15 +390,21 @@ body {
 .form-group textarea {
     font-family: var(--font-body);
     font-size: 0.9rem;
-    color: var(--dark);
-    background-color: var(--white);
-    border: 1.5px solid var(--light-gray);
+    color: var(--white);                       /* white typed text */
+    background: rgba(255, 255, 255, 0.10);     /* transparent input bg */
+    border: 1.5px solid rgba(255, 255, 255, 0.30);
     border-radius: 3px;
     padding: 0.75rem 1rem;
     outline: none;
     width: 100%;
     resize: none;
     transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Placeholder text — soft white */
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: rgba(255, 255, 255, 0.45);
 }
 
 /* Gold border + soft glow on focus */
@@ -402,28 +414,28 @@ body {
     box-shadow: 0 0 0 3px rgba(200, 169, 110, 0.12);
 }
 
-/* Submit button */
+/* Submit button — white bg so it pops on the dark glass */
 .form-submit {
     width: 100%;
     padding: 0.9rem;
-    background-color: var(--dark);
-    color: var(--white);
+    background-color: var(--white);
+    color: var(--dark);
     font-family: var(--font-heading);
     font-size: 0.88rem;
     font-weight: 600;
     letter-spacing: 2px;
     text-transform: uppercase;
-    border: 2px solid var(--dark);
+    border: 2px solid var(--white);
     border-radius: 3px;
     cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
     margin-top: 0.4rem;
 }
 
-/* Inverted hover: white bg, dark text */
+/* Hover: transparent with white text */
 .form-submit:hover {
-    background-color: var(--white);
-    color: var(--dark);
+    background-color: transparent;
+    color: var(--white);
 }
 
 
