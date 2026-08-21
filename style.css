@@ -180,12 +180,13 @@ body {
     position: relative;
     width: 100%;
     height: 100vh;
-    min-height: 500px; /* ensures full coverage on very short screens */
+    min-height: 500px;
 
     background-image: url('assets/img/bg_img1.jpeg');
-    background-size: cover;
-    background-position: center;
+    background-size: contain;          /* shows the whole image, no cropping */
+    background-position: center center;
     background-repeat: no-repeat;
+    background-color: #0d0d0d;         /* dark fill for gaps around the image */
 
     display: flex;
     align-items: center;
@@ -195,9 +196,10 @@ body {
     animation: heroZoom 20s ease-in-out infinite alternate;
 }
 
+/* Gentle zoom — stays within contain bounds */
 @keyframes heroZoom {
     0%   { background-size: 100%; }
-    100% { background-size: 112%; }
+    100% { background-size: 105%; }
 }
 
 /* Dark overlay for text readability */
@@ -295,11 +297,12 @@ body {
 
 /* Outer section wrapper — background image with Ken Burns zoom */
 .query-section {
-    position: relative;                    /* needed for ::before overlay */
+    position: relative;
     background-image: url('assets/img/bg_img2.jpeg');
-    background-size: cover;
-    background-position: center;
+    background-size: contain;          /* shows the whole image, no cropping */
+    background-position: center center;
     background-repeat: no-repeat;
+    background-color: #0d0d0d;         /* dark fill for gaps around the image */
     padding: clamp(3rem, 8vw, 6rem) clamp(1rem, 5vw, 2rem);
 
     /* Same slow zoom as the hero section */
