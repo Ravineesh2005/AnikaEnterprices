@@ -475,50 +475,39 @@ body {
 
 /* Slideshow Container */
 .works-slideshow {
+    position: relative;
+    width: 100%;
+    min-height: 550px;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    gap: 2rem;
-    max-width: 900px;
+    justify-content: center;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+    max-width: 1100px;
     margin: 0 auto;
 }
 
-/* Info Panel Container (placed above images in flex column) */
-.works-info-panel {
-    position: relative;
-    width: 100%;
-    min-height: 220px; /* Prevents layout jump during cross-fade */
-    order: 1; /* Content above image */
-}
-
-/* Individual Info Blocks */
-.work-info {
+/* Image Panel Container — now acts as the background layer */
+.works-images {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.8s ease, visibility 0.8s ease, transform 0.8s ease;
-    transform: translateY(10px);
+    height: 100%;
+    z-index: 0;
 }
 
-.work-info.active {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-}
-
-/* Image Panel Container */
-.works-images {
-    position: relative;
+/* Dark overlay over the images so text is readable */
+.works-images::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    aspect-ratio: 16/9; /* Keeps images a consistent rectangle */
-    max-height: 500px;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    order: 2; /* Image below content */
+    height: 100%;
+    background: rgba(0, 0, 0, 0.65);
+    z-index: 1;
 }
 
 /* Individual Image Slides */
@@ -530,7 +519,7 @@ body {
     height: 100%;
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.8s ease, visibility 0.8s ease, transform 2s ease-out;
+    transition: opacity 1s ease, visibility 1s ease, transform 3s ease-out;
     transform: scale(1.05); /* Smooth slight zoom */
 }
 
@@ -547,7 +536,37 @@ body {
     display: block;
 }
 
-/* Text styles inside work-info */
+/* Info Panel Container (placed on top of images) */
+.works-info-panel {
+    position: relative;
+    z-index: 2; /* above the overlay */
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+/* Individual Info Blocks */
+.work-info {
+    position: absolute;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.8s ease, visibility 0.8s ease, transform 0.8s ease;
+    transform: translateY(20px);
+    text-align: center;
+    width: 100%;
+    max-width: 800px;
+}
+
+.work-info.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    position: relative; /* Allows it to flow naturally in the flex container */
+}
+
+/* Text styles inside work-info for dark background */
 .info-number {
     display: inline-block;
     font-family: var(--font-heading);
@@ -559,8 +578,8 @@ body {
 
 .info-title {
     font-family: var(--font-heading);
-    font-size: clamp(1.4rem, 3vw, 2rem);
-    color: var(--dark);
+    font-size: clamp(1.6rem, 4vw, 2.5rem);
+    color: var(--white);
     margin-bottom: 1rem;
 }
 
@@ -570,10 +589,10 @@ body {
 
 .info-desc {
     font-family: var(--font-body);
-    font-size: 1rem;
-    color: var(--dark-mid);
+    font-size: 1.05rem;
+    color: rgba(255, 255, 255, 0.85);
     line-height: 1.6;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
     max-width: 700px;
     margin-left: auto;
     margin-right: auto;
@@ -589,13 +608,15 @@ body {
 
 .info-features li {
     font-family: var(--font-body);
-    font-size: 0.85rem;
-    color: var(--dark);
+    font-size: 0.9rem;
+    color: var(--white);
     font-weight: 600;
-    background: var(--off-white);
-    padding: 0.5rem 1.2rem;
+    background: rgba(255, 255, 255, 0.15); /* Glass effect */
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    padding: 0.6rem 1.4rem;
     border-radius: 30px;
-    border: 1px solid var(--light-gray);
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 /* Progress dots */
