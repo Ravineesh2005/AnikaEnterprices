@@ -293,14 +293,32 @@ body {
 
 /* ==================== 8. QUERY FORM SECTION ==================== */
 
-/* Outer section wrapper — off-white background */
+/* Outer section wrapper — background image with Ken Burns zoom */
 .query-section {
-    background-color: var(--off-white);
+    position: relative;                    /* needed for ::before overlay */
+    background-image: url('assets/img/bg_img2.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     padding: clamp(3rem, 8vw, 6rem) clamp(1rem, 5vw, 2rem);
+
+    /* Same slow zoom as the hero section */
+    animation: heroZoom 20s ease-in-out infinite alternate;
 }
 
-/* White card that holds the form */
+/* Dark overlay over the bg image — keeps the form card readable */
+.query-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.52);
+    z-index: 0;
+}
+
+/* White card that holds the form — sits above the overlay */
 .query-container {
+    position: relative;
+    z-index: 1;
     max-width: 760px;
     margin: 0 auto;
     background-color: var(--white);
