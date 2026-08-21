@@ -10,8 +10,9 @@
    6.  SVG Title Animation
    7.  Hero Subtitle
    8.  Query Form Section
-   9.  Floating Buttons (WhatsApp & Phone)
-   10. Media Queries (mobile < 500px)
+   9.  Works & Services Section
+   10. Floating Buttons (WhatsApp & Phone)
+   11. Media Queries
 ============================================================ */
 
 
@@ -442,7 +443,7 @@ body {
 }
 
 
-/* ==================== 10. WORKS & SERVICES SECTION ==================== */
+/* ==================== 9. WORKS & SERVICES SECTION ==================== */
 .works-section {
     padding: clamp(3rem, 8vw, 6rem) clamp(1rem, 5vw, 2rem);
     background-color: var(--white);
@@ -477,56 +478,86 @@ body {
 .works-slideshow {
     position: relative;
     width: 100%;
-    min-height: 550px;
+    min-height: 600px;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
     border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
-    max-width: 1100px;
+    max-width: 1200px;
     margin: 0 auto;
+    overflow: hidden;
+    perspective: 1200px; /* Enables 3D space */
 }
 
-/* Image Panel Container — now acts as the background layer */
+/* Image Panel Container — holds the 3D cards */
 .works-images {
-    position: absolute;
-    top: 0;
-    left: 0;
+    position: relative;
     width: 100%;
-    height: 100%;
-    z-index: 0;
-}
-
-/* Dark overlay over the images so text is readable */
-.works-images::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.65);
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform-style: preserve-3d;
+    margin-top: 2rem;
     z-index: 1;
 }
 
-/* Individual Image Slides */
+/* Individual Image Cards */
 .work-slide {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    width: 60%;
+    max-width: 600px;
+    aspect-ratio: 16/9;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+    transition: transform 0.8s ease, opacity 0.8s ease, z-index 0.8s;
     opacity: 0;
-    visibility: hidden;
-    transition: opacity 1s ease, visibility 1s ease, transform 3s ease-out;
-    transform: scale(1.05); /* Smooth slight zoom */
+    z-index: 0;
+    transform: scale(0.6) translateY(20px);
 }
 
+/* Base state for active image */
 .work-slide.active {
     opacity: 1;
-    visibility: visible;
-    transform: scale(1);
+    z-index: 3;
+    transform: translateX(0) scale(1) rotateY(0deg);
+}
+
+/* State for previous image (left) */
+.work-slide.prev {
+    opacity: 0.6;
+    z-index: 2;
+    transform: translateX(-40%) scale(0.8) rotateY(25deg);
+    cursor: pointer;
+}
+
+/* State for next image (right) */
+.work-slide.next {
+    opacity: 0.6;
+    z-index: 2;
+    transform: translateX(40%) scale(0.8) rotateY(-25deg);
+    cursor: pointer;
+}
+
+/* Hover effects for side cards */
+.work-slide.prev:hover,
+.work-slide.next:hover {
+    opacity: 0.8;
+}
+
+/* Dark overlay ONLY on the side images to focus on the center */
+.work-slide::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    transition: background 0.8s ease;
+    z-index: 1;
+}
+
+.work-slide.active::after {
+    background: rgba(0, 0, 0, 0); /* Center image is fully bright */
 }
 
 .work-slide img {
@@ -536,15 +567,16 @@ body {
     display: block;
 }
 
-/* Info Panel Container (placed on top of images) */
+/* Info Panel Container (placed below the 3D gallery) */
 .works-info-panel {
     position: relative;
-    z-index: 2; /* above the overlay */
+    z-index: 2;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 2rem;
+    padding: 1rem 2rem;
+    min-height: 250px;
 }
 
 /* Individual Info Blocks */
@@ -552,7 +584,7 @@ body {
     position: absolute;
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.8s ease, visibility 0.8s ease, transform 0.8s ease;
+    transition: opacity 0.6s ease, visibility 0.6s ease, transform 0.6s ease;
     transform: translateY(20px);
     text-align: center;
     width: 100%;
@@ -566,7 +598,7 @@ body {
     position: relative; /* Allows it to flow naturally in the flex container */
 }
 
-/* Text styles inside work-info for dark background */
+/* Text styles inside work-info */
 .info-number {
     display: inline-block;
     font-family: var(--font-heading);
@@ -579,7 +611,7 @@ body {
 .info-title {
     font-family: var(--font-heading);
     font-size: clamp(1.6rem, 4vw, 2.5rem);
-    color: var(--white);
+    color: var(--dark); /* Changed back to dark since it's on white bg */
     margin-bottom: 1rem;
 }
 
@@ -590,7 +622,7 @@ body {
 .info-desc {
     font-family: var(--font-body);
     font-size: 1.05rem;
-    color: rgba(255, 255, 255, 0.85);
+    color: var(--dark-mid); /* Changed back to dark */
     line-height: 1.6;
     margin-bottom: 2rem;
     max-width: 700px;
@@ -609,14 +641,12 @@ body {
 .info-features li {
     font-family: var(--font-body);
     font-size: 0.9rem;
-    color: var(--white);
+    color: var(--dark);
     font-weight: 600;
-    background: rgba(255, 255, 255, 0.15); /* Glass effect */
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    background: var(--off-white);
     padding: 0.6rem 1.4rem;
     border-radius: 30px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    border: 1px solid var(--light-gray);
 }
 
 /* Progress dots */
@@ -646,7 +676,7 @@ body {
 }
 
 
-/* ==================== 11. FLOATING BUTTONS ==================== */
+/* ==================== 10. FLOATING BUTTONS ==================== */
 
 /* Shared base style for both floating buttons */
 .float-btn {
@@ -705,7 +735,7 @@ body {
 }
 
 
-/* ==================== 10. MEDIA QUERIES — mobile < 500px ==================== */
+/* ==================== 11. MEDIA QUERIES ==================== */
 
 @media (max-width: 500px) {
 
@@ -808,5 +838,37 @@ body {
 
     .whatsapp-btn { right: 16px; }
     .phone-btn    { left: 16px; }
+
+    /* --- Works 3D Carousel (Mobile) --- */
+    .works-slideshow {
+        min-height: auto;
+    }
+
+    .works-images {
+        height: 220px;
+        margin-top: 1rem;
+    }
+
+    .work-slide {
+        width: 80%; /* Wider cards on mobile */
+    }
+
+    /* Adjust 3D positions slightly for mobile so they don't go offscreen */
+    .work-slide.prev {
+        transform: translateX(-25%) scale(0.85) rotateY(15deg);
+    }
+    
+    .work-slide.next {
+        transform: translateX(25%) scale(0.85) rotateY(-15deg);
+    }
+
+    .works-info-panel {
+        padding: 1rem 0;
+        min-height: 200px;
+    }
+
+    .info-title {
+        font-size: 1.4rem;
+    }
 
 }
