@@ -442,7 +442,190 @@ body {
 }
 
 
-/* ==================== 9. FLOATING BUTTONS ==================== */
+/* ==================== 10. WORKS & SERVICES SECTION ==================== */
+.works-section {
+    padding: clamp(3rem, 8vw, 6rem) clamp(1rem, 5vw, 2rem);
+    background-color: var(--white);
+    text-align: center;
+}
+
+.works-header {
+    margin-bottom: 3rem;
+}
+
+.works-title {
+    font-family: var(--font-heading);
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    font-weight: 700;
+    color: var(--dark);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.works-title span {
+    color: var(--accent);
+}
+
+.works-subtitle {
+    font-family: var(--font-body);
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+    color: var(--dark-mid);
+    margin-top: 0.5rem;
+}
+
+/* Slideshow Container */
+.works-slideshow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Info Panel Container (placed above images in flex column) */
+.works-info-panel {
+    position: relative;
+    width: 100%;
+    min-height: 220px; /* Prevents layout jump during cross-fade */
+    order: 1; /* Content above image */
+}
+
+/* Individual Info Blocks */
+.work-info {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.8s ease, visibility 0.8s ease, transform 0.8s ease;
+    transform: translateY(10px);
+}
+
+.work-info.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Image Panel Container */
+.works-images {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/9; /* Keeps images a consistent rectangle */
+    max-height: 500px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    order: 2; /* Image below content */
+}
+
+/* Individual Image Slides */
+.work-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.8s ease, visibility 0.8s ease, transform 2s ease-out;
+    transform: scale(1.05); /* Smooth slight zoom */
+}
+
+.work-slide.active {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+}
+
+.work-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Text styles inside work-info */
+.info-number {
+    display: inline-block;
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    font-weight: 900;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+}
+
+.info-title {
+    font-family: var(--font-heading);
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    color: var(--dark);
+    margin-bottom: 1rem;
+}
+
+.info-title span {
+    color: var(--accent);
+}
+
+.info-desc {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--dark-mid);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.info-features {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.info-features li {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    color: var(--dark);
+    font-weight: 600;
+    background: var(--off-white);
+    padding: 0.5rem 1.2rem;
+    border-radius: 30px;
+    border: 1px solid var(--light-gray);
+}
+
+/* Progress dots */
+.slide-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.8rem;
+    margin-top: 2rem;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: var(--light-gray);
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.dot:hover {
+    background-color: #ccc;
+}
+
+.dot.active {
+    background-color: var(--accent);
+    transform: scale(1.2);
+}
+
+
+/* ==================== 11. FLOATING BUTTONS ==================== */
 
 /* Shared base style for both floating buttons */
 .float-btn {
