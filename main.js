@@ -21,7 +21,6 @@ navLinks.querySelectorAll('a').forEach(link => {
 -------------------------------------------------- */
 (function () {
     const slides  = document.querySelectorAll('.work-slide');
-    const infos   = document.querySelectorAll('.work-info');
     const dots    = document.querySelectorAll('.dot');
     let current   = 0;
     let timer;
@@ -37,9 +36,6 @@ navLinks.querySelectorAll('a').forEach(link => {
         slides.forEach(slide => {
             slide.classList.remove('active', 'prev', 'next');
         });
-        infos.forEach(info => {
-            info.classList.remove('active');
-        });
         dots.forEach(dot => {
             dot.classList.remove('active');
         });
@@ -49,7 +45,6 @@ navLinks.querySelectorAll('a').forEach(link => {
         slides[current].classList.add('active');
         slides[next].classList.add('next');
         
-        infos[current].classList.add('active');
         dots[current].classList.add('active');
     }
 

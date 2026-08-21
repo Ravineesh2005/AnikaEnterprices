@@ -474,11 +474,10 @@ body {
     margin-top: 0.5rem;
 }
 
-/* Slideshow Container */
+    /* Slideshow Container */
 .works-slideshow {
     position: relative;
     width: 100%;
-    min-height: 600px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -493,22 +492,23 @@ body {
 .works-images {
     position: relative;
     width: 100%;
-    height: 400px;
+    height: 550px; /* Increased height to fit glass cards */
     display: flex;
     justify-content: center;
     align-items: center;
     transform-style: preserve-3d;
-    margin-top: 2rem;
+    margin-top: 1rem;
     z-index: 1;
 }
 
 /* Individual Image Cards */
 .work-slide {
     position: absolute;
-    width: 60%;
-    max-width: 600px;
-    aspect-ratio: 16/9;
-    border-radius: 12px;
+    width: 70%; /* Made card wider */
+    max-width: 750px;
+    height: 100%;
+    max-height: 500px;
+    border-radius: 16px;
     overflow: hidden;
     box-shadow: 0 15px 40px rgba(0,0,0,0.3);
     transition: transform 0.8s ease, opacity 0.8s ease, z-index 0.8s;
@@ -567,52 +567,56 @@ body {
     display: block;
 }
 
-/* Info Panel Container (placed below the 3D gallery) */
-.works-info-panel {
-    position: relative;
-    z-index: 2;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 1rem 2rem;
-    min-height: 250px;
-}
+/* ============================================================
+   INTEGRATED GLASSMORPHISM INFO PANEL
+   ============================================================ */
 
-/* Individual Info Blocks */
+/* Text Info Overlay inside the 3D card */
 .work-info {
     position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    
+    /* Glassmorphism background */
+    background: rgba(15, 15, 15, 0.75);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+
+    padding: 2rem;
+    text-align: center;
+    
+    /* Animation state - hidden by default */
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.6s ease, visibility 0.6s ease, transform 0.6s ease;
-    transform: translateY(20px);
-    text-align: center;
-    width: 100%;
-    max-width: 800px;
+    transform: translateY(100%); /* Slides down when hidden */
+    transition: opacity 0.6s ease, visibility 0.6s ease, transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-.work-info.active {
+/* Show the text panel ONLY when the parent slide is active */
+.work-slide.active .work-info {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
-    position: relative; /* Allows it to flow naturally in the flex container */
+    transition-delay: 0.3s; /* Slight delay so image lands before text slides up */
 }
 
-/* Text styles inside work-info */
+/* Text styles inside glass panel */
 .info-number {
     display: inline-block;
     font-family: var(--font-heading);
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 900;
     color: var(--accent);
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.3rem;
 }
 
 .info-title {
     font-family: var(--font-heading);
-    font-size: clamp(1.6rem, 4vw, 2.5rem);
-    color: var(--dark); /* Changed back to dark since it's on white bg */
-    margin-bottom: 1rem;
+    font-size: clamp(1.4rem, 3vw, 1.8rem);
+    color: var(--white);
+    margin-bottom: 0.8rem;
 }
 
 .info-title span {
@@ -621,11 +625,11 @@ body {
 
 .info-desc {
     font-family: var(--font-body);
-    font-size: 1.05rem;
-    color: var(--dark-mid); /* Changed back to dark */
-    line-height: 1.6;
-    margin-bottom: 2rem;
-    max-width: 700px;
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+    max-width: 600px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -634,19 +638,21 @@ body {
     list-style: none;
     display: flex;
     justify-content: center;
-    gap: 1rem;
+    gap: 0.8rem;
     flex-wrap: wrap;
 }
 
 .info-features li {
     font-family: var(--font-body);
-    font-size: 0.9rem;
-    color: var(--dark);
+    font-size: 0.85rem;
+    color: var(--white);
     font-weight: 600;
-    background: var(--off-white);
-    padding: 0.6rem 1.4rem;
+    
+    /* Subtle glass pill effect for features */
+    background: rgba(255, 255, 255, 0.12);
+    padding: 0.5rem 1.2rem;
     border-radius: 30px;
-    border: 1px solid var(--light-gray);
+    border: 1px solid rgba(255, 255, 255, 0.25);
 }
 
 /* Progress dots */
@@ -840,35 +846,42 @@ body {
     .phone-btn    { left: 16px; }
 
     /* --- Works 3D Carousel (Mobile) --- */
-    .works-slideshow {
-        min-height: auto;
-    }
-
     .works-images {
-        height: 220px;
+        height: 450px;
         margin-top: 1rem;
     }
 
     .work-slide {
-        width: 80%; /* Wider cards on mobile */
+        width: 85%; /* Wider cards on mobile */
+        max-height: 400px;
     }
 
     /* Adjust 3D positions slightly for mobile so they don't go offscreen */
     .work-slide.prev {
-        transform: translateX(-25%) scale(0.85) rotateY(15deg);
+        transform: translateX(-30%) scale(0.85) rotateY(15deg);
     }
     
     .work-slide.next {
-        transform: translateX(25%) scale(0.85) rotateY(-15deg);
+        transform: translateX(30%) scale(0.85) rotateY(-15deg);
     }
 
-    .works-info-panel {
-        padding: 1rem 0;
-        min-height: 200px;
+    .work-info {
+        padding: 1rem;
     }
 
     .info-title {
-        font-size: 1.4rem;
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .info-desc {
+        font-size: 0.85rem;
+        margin-bottom: 1rem;
+    }
+
+    .info-features li {
+        padding: 0.3rem 0.8rem;
+        font-size: 0.75rem;
     }
 
 }
