@@ -184,10 +184,9 @@ body {
     min-height: 500px;
 
     background-image: url('assets/img/bg_img1.jpeg');
-    background-size: contain;          /* shows the whole image, no cropping */
+    background-size: cover;          /* fill the entire section, removing gaps */
     background-position: center center;
     background-repeat: no-repeat;
-    background-color: #0d0d0d;         /* dark fill for gaps around the image */
 
     display: flex;
     align-items: center;
@@ -300,10 +299,9 @@ body {
 .query-section {
     position: relative;
     background-image: url('assets/img/bg_img2.jpeg');
-    background-size: contain;          /* shows the whole image, no cropping */
+    background-size: cover;          /* fill the entire section, removing gaps */
     background-position: center center;
     background-repeat: no-repeat;
-    background-color: #0d0d0d;         /* dark fill for gaps around the image */
     padding: clamp(3rem, 8vw, 6rem) clamp(1rem, 5vw, 2rem);
 
     /* Same slow zoom as the hero section */
