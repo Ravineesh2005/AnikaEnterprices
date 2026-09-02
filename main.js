@@ -1,23 +1,10 @@
-/* --- Hamburger menu toggle --- */
-const hamburger = document.getElementById('hamburger');
-const navLinks  = document.getElementById('nav-links');
+/* ============================================================
+   ANIKA ENTERPRISES — MAIN JAVASCRIPT
+   ============================================================ */
 
-hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('open');
-    navLinks.classList.toggle('open');
-});
-
-navLinks.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-        hamburger.classList.remove('open');
-        navLinks.classList.remove('open');
-    });
-});
-
-
-/* --- Works & Services Slideshow ---
-    Auto-advances every 5 seconds with a smooth fade transition.
-    Clicking a dot jumps directly to that slide.
+/* --- Works & Services 3D Slideshow ---
+   Auto-advances every 5 seconds with 3D rotation & glass animation.
+   Clicking dots or side cards jumps directly to that slide.
 -------------------------------------------------- */
 (function () {
     const slides  = document.querySelectorAll('.work-slide');

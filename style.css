@@ -4,18 +4,16 @@
    Structure:
    1.  Root Variables
    2.  Reset & Base
-   3.  Navigation Bar
-   4.  Hamburger Button (mobile)
-   5.  Hero Section
-   6.  SVG Title Animation
-   7.  Hero Subtitle
-   8.  Features / Why Choose Us
-   9.  Query Form Section
-   10. Works & Services Section
-   11. Location & Office Section
-   12. Footer Section
-   13. Floating Buttons (WhatsApp & Phone)
-   14. Media Queries
+   3.  Hero Section
+   4.  SVG Title Animation
+   5.  Hero Subtitle
+   6.  Features / Why Choose Us
+   7.  Query Form Section
+   8.  Works & Services (3D Slideshow)
+   9.  Location & Office Section (Google Maps)
+   10. Footer Section
+   11. Floating Action Buttons (WhatsApp & Phone)
+   12. Media Queries
 ============================================================ */
 
 
@@ -36,9 +34,6 @@
     /* Fonts */
     --font-heading: 'Montserrat', sans-serif;
     --font-body:    'Poppins', sans-serif;
-
-    /* Nav height */
-    --nav-height: 68px;
 }
 
 
@@ -61,124 +56,7 @@ body {
 }
 
 
-/* ==================== 3. NAVIGATION BAR ==================== */
-
-/* Main bar */
-.navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: var(--nav-height);
-
-    background-color: rgba(255, 255, 255, 0.96);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 clamp(1rem, 5vw, 4rem);
-
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
-    z-index: 1000;
-}
-
-/* Logo */
-.nav-logo {
-    font-family: var(--font-heading);
-    font-size: clamp(0.9rem, 2.5vw, 1.3rem);
-    font-weight: 700;
-    color: var(--dark);
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    /* Stay visible above the mobile dropdown */
-    z-index: 1001;
-}
-
-/* Links list */
-.nav-links {
-    list-style: none;
-    display: flex;
-    gap: clamp(1.2rem, 3.5vw, 2.5rem);
-}
-
-/* Individual link */
-.nav-links a {
-    font-family: var(--font-body);
-    font-size: clamp(0.8rem, 1.5vw, 0.95rem);
-    font-weight: 400;
-    color: var(--dark-mid);
-    text-decoration: none;
-    letter-spacing: 0.5px;
-    position: relative;
-    padding-bottom: 4px;
-    transition: color 0.3s ease;
-}
-
-/* Animated gold underline on hover */
-.nav-links a::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0%;
-    height: 2px;
-    background-color: var(--accent);
-    transition: width 0.3s ease;
-}
-
-.nav-links a:hover,
-.nav-links a.active {
-    color: var(--dark);
-}
-
-.nav-links a:hover::after,
-.nav-links a.active::after {
-    width: 100%;
-}
-
-
-/* ==================== 4. HAMBURGER BUTTON (mobile) ==================== */
-
-/* Hidden on desktop — shown only via media query below */
-.hamburger {
-    display: none;
-    flex-direction: column;
-    justify-content: center;
-    gap: 5px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 6px;
-    z-index: 1001;
-}
-
-/* Three bar lines */
-.hamburger span {
-    display: block;
-    width: 24px;
-    height: 2px;
-    background-color: var(--dark);
-    border-radius: 2px;
-    transition: transform 0.35s ease, opacity 0.25s ease;
-    transform-origin: center;
-}
-
-/* Animate bars into an X when .open is added */
-.hamburger.open span:nth-child(1) {
-    transform: translateY(7px) rotate(45deg);
-}
-.hamburger.open span:nth-child(2) {
-    opacity: 0;
-    transform: scaleX(0);
-}
-.hamburger.open span:nth-child(3) {
-    transform: translateY(-7px) rotate(-45deg);
-}
-
-
-/* ==================== 5. HERO SECTION ==================== */
+/* ==================== 3. HERO SECTION ==================== */
 
 .hero {
     position: relative;
@@ -224,7 +102,7 @@ body {
 }
 
 
-/* ==================== 6. SVG TITLE ANIMATION ==================== */
+/* ==================== 4. SVG TITLE ANIMATION ==================== */
 
 /* SVG container */
 .hero-title {
@@ -269,7 +147,7 @@ body {
 }
 
 
-/* ==================== 7. HERO SUBTITLE ==================== */
+/* ==================== 5. HERO SUBTITLE ==================== */
 
 .hero-subtitle {
     font-family: var(--font-body);
@@ -296,7 +174,7 @@ body {
 }
 
 
-/* ==================== 8. FEATURES / WHY CHOOSE US ==================== */
+/* ==================== 6. FEATURES / WHY CHOOSE US ==================== */
 
 .features-section {
     padding: clamp(3rem, 6vw, 5rem) clamp(1rem, 5vw, 2rem);
@@ -348,7 +226,7 @@ body {
 }
 
 
-/* ==================== 9. QUERY FORM SECTION ==================== */
+/* ==================== 7. QUERY FORM SECTION ==================== */
 
 /* Outer section wrapper — background image with Ken Burns zoom */
 .query-section {
@@ -496,7 +374,7 @@ body {
 }
 
 
-/* ==================== 10. WORKS & SERVICES SECTION ==================== */
+/* ==================== 8. WORKS & SERVICES SECTION ==================== */
 .works-section {
     padding: clamp(3rem, 8vw, 6rem) clamp(1rem, 5vw, 2rem);
     background-color: var(--white);
@@ -735,7 +613,7 @@ body {
 }
 
 
-/* ==================== 11. LOCATION & OFFICE SECTION ==================== */
+/* ==================== 9. LOCATION & OFFICE SECTION ==================== */
 .location-section {
     padding: clamp(3.5rem, 7vw, 6rem) clamp(1rem, 5vw, 2rem);
     background-color: var(--off-white);
@@ -910,7 +788,7 @@ body {
 }
 
 
-/* ==================== 12. FOOTER SECTION ==================== */
+/* ==================== 10. FOOTER SECTION ==================== */
 .site-footer {
     background-color: #111111;
     color: #a0a0a0;
@@ -1018,7 +896,7 @@ body {
 }
 
 
-/* ==================== 13. FLOATING BUTTONS ==================== */
+/* ==================== 11. FLOATING BUTTONS ==================== */
 
 /* Shared base style for both floating buttons */
 .float-btn {
@@ -1077,71 +955,9 @@ body {
 }
 
 
-/* ==================== 14. MEDIA QUERIES ==================== */
+/* ==================== 12. MEDIA QUERIES ==================== */
 
 @media (max-width: 500px) {
-
-    /* --- Navbar: switch to vertical dropdown layout --- */
-    .navbar {
-        /* Allow height to grow when menu is open */
-        height: auto;
-        min-height: var(--nav-height);
-        flex-wrap: wrap;
-        padding: 0 1.2rem;
-        align-items: center;
-    }
-
-    /* Logo row stays at fixed height */
-    .nav-logo {
-        height: var(--nav-height);
-        display: flex;
-        align-items: center;
-        font-size: 1rem;
-    }
-
-    /* Show hamburger button on mobile */
-    .hamburger {
-        display: flex;
-        height: var(--nav-height);
-        align-items: center;
-    }
-
-    /* Hide nav links by default — slide down when .open is added */
-    .nav-links {
-        width: 100%;
-        flex-direction: column;
-        gap: 0;
-        max-height: 0;
-        overflow: hidden;
-
-        /* Smooth slide down */
-        transition: max-height 0.4s ease, padding 0.3s ease;
-        padding: 0;
-    }
-
-    /* Open state: slide the menu into view */
-    .nav-links.open {
-        max-height: 200px;
-        padding: 0.5rem 0 1rem;
-    }
-
-    /* Each link: full width, padded row */
-    .nav-links li {
-        width: 100%;
-    }
-
-    .nav-links a {
-        display: block;
-        width: 100%;
-        padding: 0.65rem 0;
-        font-size: 0.9rem;
-        border-bottom: 1px solid var(--light-gray);
-    }
-
-    /* Remove underline pseudo-element on mobile — not needed */
-    .nav-links a::after {
-        display: none;
-    }
 
     /* --- Hero: ensure full screen height on small phones --- */
     .hero {
