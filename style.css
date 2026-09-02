@@ -526,9 +526,13 @@ body {
 
 /* ==================== 5. WORKS & SERVICES SECTION ==================== */
 .works-section {
-    padding: clamp(3rem, 8vw, 6rem) clamp(1rem, 5vw, 2rem);
-    background-color: var(--white);
+    padding: clamp(4rem, 8vw, 6.5rem) clamp(1rem, 5vw, 2rem);
+    background: radial-gradient(circle at 50% 30%, #1a1b20 0%, #101114 100%);
+    color: var(--white);
     text-align: center;
+    position: relative;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .works-header {
@@ -539,7 +543,7 @@ body {
     font-family: var(--font-heading);
     font-size: clamp(1.8rem, 4vw, 2.5rem);
     font-weight: 700;
-    color: var(--dark);
+    color: var(--white);
     text-transform: uppercase;
     letter-spacing: 1px;
 }
@@ -551,7 +555,7 @@ body {
 .works-subtitle {
     font-family: var(--font-body);
     font-size: clamp(0.9rem, 2vw, 1.1rem);
-    color: var(--dark-mid);
+    color: rgba(255, 255, 255, 0.7);
     margin-top: 0.5rem;
 }
 
@@ -741,25 +745,28 @@ body {
     display: flex;
     justify-content: center;
     gap: 0.8rem;
-    margin-top: 2rem;
+    margin-top: 2.2rem;
 }
 
 .dot {
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    background-color: var(--light-gray);
+    background-color: rgba(255, 255, 255, 0.22);
+    border: 1px solid rgba(255, 255, 255, 0.15);
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .dot:hover {
-    background-color: #ccc;
+    background-color: rgba(255, 255, 255, 0.6);
 }
 
 .dot.active {
     background-color: var(--accent);
-    transform: scale(1.2);
+    border-color: var(--accent);
+    transform: scale(1.25);
+    box-shadow: 0 0 12px rgba(200, 169, 110, 0.65);
 }
 
 
