@@ -5,13 +5,12 @@
    1.  Root Variables
    2.  Reset & Base
    3.  Hero Section & Floating Stats Strip
-   4.  Features / Why Choose Us
-   5.  Query Form Section
-   6.  Works & Services (3D Slideshow)
-   7.  Location & Office Section (Google Maps)
-   8.  Footer Section
-   9.  Floating Action Buttons (WhatsApp & Phone)
-   10. Media Queries
+   4.  Query Form Section
+   5.  Works & Services (3D Slideshow)
+   6.  Location & Office Section (Google Maps)
+   7.  Footer Section
+   8.  Floating Action Buttons (WhatsApp & Phone)
+   9.  Media Queries
 ============================================================ */
 
 
@@ -291,144 +290,7 @@ body {
 }
 
 
-/* ==================== 4. FEATURES / WHY CHOOSE US ==================== */
-
-.features-section {
-    padding: clamp(4rem, 8vw, 6.5rem) clamp(1rem, 5vw, 2rem);
-    background-color: var(--white);
-    border-bottom: 1px solid var(--light-gray);
-}
-
-.features-header {
-    text-align: center;
-    max-width: 800px;
-    margin: 0 auto 3.5rem;
-}
-
-.features-main-title {
-    font-family: var(--font-heading);
-    font-size: clamp(1.8rem, 4vw, 2.5rem);
-    font-weight: 700;
-    color: var(--dark);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 0.6rem;
-}
-
-.features-main-title span {
-    color: var(--accent);
-}
-
-.features-main-subtitle {
-    font-family: var(--font-body);
-    font-size: clamp(0.92rem, 1.8vw, 1.05rem);
-    color: var(--dark-mid);
-    line-height: 1.6;
-}
-
-.features-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 2rem;
-}
-
-.feature-card {
-    position: relative;
-    background-color: var(--white);
-    border: 1px solid var(--light-gray);
-    border-radius: 12px;
-    padding: 2.2rem 1.8rem;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.03);
-    transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
-    display: flex;
-    flex-direction: column;
-}
-
-.feature-card:hover {
-    transform: translateY(-8px);
-    border-color: rgba(200, 169, 110, 0.6);
-    box-shadow: 0 16px 40px rgba(200, 169, 110, 0.12);
-}
-
-.feature-step {
-    position: absolute;
-    top: 1.5rem;
-    right: 1.8rem;
-    font-family: var(--font-heading);
-    font-size: 1.8rem;
-    font-weight: 900;
-    color: rgba(0, 0, 0, 0.06);
-    line-height: 1;
-    user-select: none;
-}
-
-.feature-icon-wrapper {
-    width: 60px;
-    height: 60px;
-    border-radius: 14px;
-    background-color: rgba(200, 169, 110, 0.12);
-    border: 1px solid rgba(200, 169, 110, 0.3);
-    color: var(--accent);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.6rem;
-    margin-bottom: 1.5rem;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.feature-card:hover .feature-icon-wrapper {
-    background-color: var(--accent);
-    color: #111111;
-    transform: rotate(6deg) scale(1.05);
-}
-
-.feature-title {
-    font-family: var(--font-heading);
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: var(--dark);
-    margin-bottom: 0.8rem;
-    letter-spacing: 0.3px;
-}
-
-.feature-desc {
-    font-family: var(--font-body);
-    font-size: 0.92rem;
-    color: var(--dark-mid);
-    line-height: 1.6;
-    margin-bottom: 1.2rem;
-    flex-grow: 1;
-}
-
-.feature-card-points {
-    list-style: none;
-    border-top: 1px solid var(--light-gray);
-    padding-top: 1rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
-.feature-card-points li {
-    font-family: var(--font-body);
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: var(--dark);
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.feature-card-points li i {
-    color: var(--accent);
-    font-size: 0.85rem;
-}
-
-
-/* ==================== 5. QUERY FORM SECTION ==================== */
+/* ==================== 4. QUERY FORM SECTION ==================== */
 
 /* Outer section wrapper — background image with Ken Burns zoom */
 .query-section {
@@ -576,7 +438,7 @@ body {
 }
 
 
-/* ==================== 6. WORKS & SERVICES SECTION ==================== */
+/* ==================== 5. WORKS & SERVICES SECTION ==================== */
 .works-section {
     padding: clamp(3rem, 8vw, 6rem) clamp(1rem, 5vw, 2rem);
     background-color: var(--white);
@@ -815,7 +677,7 @@ body {
 }
 
 
-/* ==================== 7. LOCATION & OFFICE SECTION ==================== */
+/* ==================== 6. LOCATION & OFFICE SECTION ==================== */
 .location-section {
     padding: clamp(3.5rem, 7vw, 6rem) clamp(1rem, 5vw, 2rem);
     background-color: var(--off-white);
@@ -990,7 +852,7 @@ body {
 }
 
 
-/* ==================== 8. FOOTER SECTION ==================== */
+/* ==================== 7. FOOTER SECTION ==================== */
 .site-footer {
     background-color: #111111;
     color: #a0a0a0;
@@ -1098,7 +960,7 @@ body {
 }
 
 
-/* ==================== 9. FLOATING BUTTONS ==================== */
+/* ==================== 8. FLOATING BUTTONS ==================== */
 
 /* Shared base style for both floating buttons */
 .float-btn {
@@ -1157,7 +1019,7 @@ body {
 }
 
 
-/* ==================== 10. MEDIA QUERIES ==================== */
+/* ==================== 9. MEDIA QUERIES ==================== */
 
 @media (max-width: 500px) {
 
@@ -1202,15 +1064,6 @@ body {
 
     .stat-label {
         font-size: 0.72rem;
-    }
-
-    /* --- Features section mobile --- */
-    .features-container {
-        grid-template-columns: 1fr;
-    }
-
-    .features-header {
-        margin-bottom: 2.5rem;
     }
 
     /* --- Query form: single column on mobile --- */
