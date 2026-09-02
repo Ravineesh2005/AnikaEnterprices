@@ -527,7 +527,7 @@ body {
 /* ==================== 5. WORKS & SERVICES SECTION ==================== */
 .works-section {
     padding: clamp(4rem, 8vw, 6.5rem) clamp(1rem, 5vw, 2rem);
-    background: radial-gradient(circle at 50% 30%, #1a1b20 0%, #101114 100%);
+    background: radial-gradient(circle at 50% 30%, #f0efed 0%, #13151a 100%);
     color: var(--white);
     text-align: center;
     position: relative;
